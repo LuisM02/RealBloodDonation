@@ -1,0 +1,77 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Blood Donation Center{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="bg-red-50 py-16">
+        <div class="container mx-auto text-center">
+            <h1 class="text-5xl font-extrabold text-red-700">Welcome to the Blood Donation Center</h1>
+            <p class="mt-4 text-xl text-gray-800 max-w-3xl mx-auto">Your donation has the power to save lives. Join us today in making a life-saving difference for those in need.</p>
+            <a href="#" class="mt-6 inline-block px-10 py-4 bg-red-600 text-white font-semibold rounded-lg text-xl hover:bg-red-500 transition duration-300">Donate Now</a>
+        </div>
+    </section>
+
+
+    <section class="py-8 bg-gray-50">
+    <div class="container mx-auto">
+        <h2 class="text-3xl text-center font-bold text-red-600 mb-8">Donation Categories</h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {% for category in categories %}
+                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <a href="#">
+                        <div class="p-4 text-center">
+                            <h3 class="text-lg font-bold text-red-600">{{ category.name }}</h3>
+                            <p class="mt-1 text-sm text-gray-500">{{ category.items.count }} available</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+    <!-- Recent Blood Donations Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-4xl text-center font-bold text-red-600 mb-12">Recent Blood Donations</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for item in items %}
+                    <div class="bg-gray-50 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                        <div>
+                            <img src="{{ item.image.url }}" alt="{{ item.name }}" class="rounded-t-xl w-full h-56 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-red-600">{{ item.name }}</h3>
+                            <p class="mt-2 text-gray-600">{{ item.description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Blood Donation Facts Section -->
+    <section class="bg-red-100 py-16">
+        <div class="container mx-auto">
+            <h2 class="text-4xl text-center font-bold text-red-600 mb-12">Why Donate Blood?</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <h3 class="text-3xl font-bold text-red-600">Save Lives</h3>
+                    <p class="mt-4 text-gray-700">Each donation can save up to 3 lives. Be a hero today!</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <h3 class="text-3xl font-bold text-red-600">Support Medical Research</h3>
+                    <p class="mt-4 text-gray-700">Your donation also helps advance medical research and treatment methods.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <h3 class="text-3xl font-bold text-red-600">Community Impact</h3>
+                    <p class="mt-4 text-gray-700">Help keep your community healthy and ready for emergencies by donating blood.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
